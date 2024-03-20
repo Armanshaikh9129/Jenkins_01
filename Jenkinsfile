@@ -10,7 +10,7 @@ pipeline {
                 echo "Building Docker Image and Push into Dockerhub" 
                 script {
                     def app = docker.build("armansk9129/dev:latest")
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-cred') {
+                    docker.withRegistry('https://registry.hub.docker.com'/armansk9129/dev', 'docker-cred') {
                         app.push()
                     }
                 }
@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     def app = docker.build("armansk9129/qa:latest")
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-cred') {
+                    docker.withRegistry('https://registry.hub.docker.com'/armansk9129/qa', 'docker-cred') {
                         app.push()
                     }
                 }
